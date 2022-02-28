@@ -1,0 +1,57 @@
+syntax = "proto3";
+//import "google/protobuf/Empty.proto";
+
+package google.protobuf;
+
+
+//Service 1 
+// Sends a connection information
+service AreYouAlive {
+  
+  rpc GetConnection(ConnectionRequest) returns(Connection);
+
+  }
+   message ConnectionRequest {
+     string message= 1;
+  }
+  message Connection{
+    string message = 1;
+  }
+
+  //Service 2
+  service GiveMeATaskToSolve
+    {
+     rpc GetBoardSize(GetDimensions) returns(Dimensions);
+    }
+    //empty request
+    message GetDimensions
+    {
+
+    }
+    
+     message Dimensions
+     {
+        int32 horizontal =1 ;
+        int32 vertical = 2 ; 
+     }
+
+     //Service 3
+     service SendSolutionForProblem
+    {
+     rpc GetTheSolution(RequestSolution) returns(Solution);
+    }
+
+     message RequestSolution  
+     {
+       int32 x = 1;
+       int32 y = 2;
+
+      }
+     message Solution
+     {
+        int32 grains =1 ;
+       
+     }
+
+
+  
